@@ -1,17 +1,40 @@
 ---
 import { footer, siteConfig } from "@/lib/content";
 import Logo from "./Logo.astro";
-import SocialIcon from "./SocialIcon.astro";
 
 const { name, description } = siteConfig;
-const { sections, copyright, social } = footer;
+const { sections, copyright } = footer;
 const { quickLinks, legal } = sections;
+
+const resolveHref = (href: string) =>
+	href.startsWith("#")
+		? `/${href}`
+		: href.startsWith("/") ||
+			  href.startsWith("http") ||
+			  href.startsWith("mailto:") ||
+			  href.startsWith("tel:")
+			? href
+			: `/${href}`;
+
+const resolveLegalHref = (label: string, href: string) => {
+	const normalizedLabel = label.toLowerCase();
+
+	if (normalizedLabel.includes("impressum")) {
+		return "/impressum";
+	}
+
+	if (normalizedLabel.includes("datenschutz")) {
+		return "/datenschutz";
+	}
+
+	return resolveHref(href);
+};
 ---
 
 <footer class="border-t border-border bg-background py-12 sm:py-16">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<!-- Footer Content -->
-		<div class="grid gap-8 mb-8 md:grid-cols-3">
+		<div class="grid gap-8 mb-8 md:grid-cols-[1.4fr_0.8fr_0.8fr]">
 			<!-- Brand Section -->
 			<div class="flex flex-col items-start gap-4">
 				<div class="flex gap-2 items-center">
@@ -23,13 +46,16 @@ const { quickLinks, legal } = sections;
 				</p>
 			</div>
 
-			<!-- Links Section -->
-			<div class="flex flex-col gap-4">
+			<!-- Quick Links Section -->
+			<div class="flex flex-col gap-4 md:justify-self-center">
 				<h3 class="font-semibold text-foreground">{quickLinks.title}</h3>
 				<nav class="flex flex-col gap-2">
 					{
 						quickLinks.links.map((link) => (
-							<a href={link.href} class="text-sm text-muted-foreground hover:text-foreground transition-colors">
+							<a
+								href={resolveHref(link.href)}
+								class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+							>
 								{link.label}
 							</a>
 						))
@@ -37,14 +63,14 @@ const { quickLinks, legal } = sections;
 				</nav>
 			</div>
 
-			<!-- Legal & Social Section -->
-			<div class="flex flex-col gap-4">
-				<h3 class="font-semibold text-foreground">{legal.title}</h3>
+			<!-- Legal Section -->
+			<div class="flex flex-col gap-4 md:justify-self-end">
+				<h3 class="font-semibold text-foreground">Rechtliches</h3>
 				<nav class="flex flex-col gap-2">
 					{
 						legal.links.map((link) => (
 							<a
-								href={link.href}
+								href={resolveLegalHref(link.label, link.href)}
 								class="text-sm text-muted-foreground hover:text-foreground transition-colors"
 							>
 								{link.label}
@@ -59,21 +85,11 @@ const { quickLinks, legal } = sections;
 		<div class="border-t border-border my-8"></div>
 
 		<!-- Bottom Section -->
-		<div class="flex flex-col md:flex-row items-center justify-between gap-4">
+		<div class="flex flex-col md:flex-row items-center justify-center gap-4">
 			<!-- Copyright -->
 			<p class="text-sm text-muted-foreground">
 				{copyright}
 			</p>
-
-			<!-- Social Media Links (optional) -->
-			<div class="flex gap-4">
-				{
-					social.map((socialItem) => (
-						<SocialIcon social={socialItem} />
-					))
-				}
-			</div>
-			
 		</div>
 	</div>
 </footer>

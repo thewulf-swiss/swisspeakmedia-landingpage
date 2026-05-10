@@ -11,42 +11,174 @@ const { headline, description, button, disclaimer } = cta;
 	<div class="absolute inset-0 -z-10 bg-linear-to-t from-background to-transparent"></div>
 
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="rounded-2xl border border-primary/20 bg-card/50 backdrop-blur-sm p-8 sm:p-12 md:p-16 text-center">
+		<div class="rounded-2xl border border-primary/20 bg-card/50 backdrop-blur-sm p-8 sm:p-12 md:p-16">
 			<!-- Headline -->
-			<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-foreground mb-4 sm:mb-6 max-w-3xl mx-auto">
-				{headline}
-			</h2>
+			<div class="text-center">
+				<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-foreground mb-4 sm:mb-6 max-w-3xl mx-auto">
+					{headline}
+				</h2>
 
-			<!-- Description -->
-			<p class="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed">
-				{description}
-			</p>
+				<!-- Description -->
+				<p class="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+					{description}
+				</p>
 
-			<!-- Email Signup Form or CTA Button -->
-			<form 
-				name="contact"	
+				<!-- Additional Info -->
+				<p class="text-sm text-muted-foreground mb-10">
+					{disclaimer}
+				</p>
+			</div>
+
+			<!-- Lead Form -->
+			<form
+				name="website-anfrage"
 				method="POST"
-				data-netlify="true" 
-				class="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-lg mx-auto"
+				data-netlify="true"
+				netlify-honeypot="bot-field"
+				action="/danke"
+				class="mx-auto max-w-3xl"
 			>
-				<input type="hidden" name="form-name" value="contact" />
-				<input
-					type="email"
-					name="email"
-					placeholder="hallo@swisspeakmedia.ch"
-					class="flex-1 w-full px-4 py-3 rounded-md border border-input bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
-					aria-label="Email address"
-					required
-				/>
-				<Button type="submit" variant="primary" size="lg" class="whitespace-nowrap">
-					{button.label}
-				</Button>
-			</form>
+				<input type="hidden" name="form-name" value="website-anfrage" />
 
-			<!-- Additional Info -->
-			<p class="text-sm text-muted-foreground mt-6">
-				{disclaimer}
-			</p>
+				<p class="hidden">
+					<label>
+						Dieses Feld bitte nicht ausfüllen:
+						<input name="bot-field" />
+					</label>
+				</p>
+
+				<div class="grid gap-4 sm:grid-cols-2">
+					<div>
+						<label for="name" class="mb-2 block text-sm font-medium text-foreground">
+							Name *
+						</label>
+						<input
+							id="name"
+							name="name"
+							type="text"
+							required
+							autocomplete="name"
+							placeholder="Ihr Name"
+							class="w-full rounded-md border border-input bg-background px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+						/>
+					</div>
+
+					<div>
+						<label for="firma" class="mb-2 block text-sm font-medium text-foreground">
+							Firma
+						</label>
+						<input
+							id="firma"
+							name="firma"
+							type="text"
+							autocomplete="organization"
+							placeholder="Ihre Firma"
+							class="w-full rounded-md border border-input bg-background px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+						/>
+					</div>
+
+					<div>
+						<label for="email" class="mb-2 block text-sm font-medium text-foreground">
+							E-Mail *
+						</label>
+						<input
+							id="email"
+							name="email"
+							type="email"
+							required
+							autocomplete="email"
+							placeholder="name@firma.ch"
+							class="w-full rounded-md border border-input bg-background px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+						/>
+					</div>
+
+					<div>
+						<label for="telefon" class="mb-2 block text-sm font-medium text-foreground">
+							Telefon
+						</label>
+						<input
+							id="telefon"
+							name="telefon"
+							type="tel"
+							autocomplete="tel"
+							placeholder="+41 ..."
+							class="w-full rounded-md border border-input bg-background px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+						/>
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<label for="website" class="mb-2 block text-sm font-medium text-foreground">
+						Bestehende Website
+					</label>
+					<input
+						id="website"
+						name="website"
+						type="url"
+						autocomplete="url"
+						placeholder="https://www.ihre-website.ch"
+						class="w-full rounded-md border border-input bg-background px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+					/>
+				</div>
+
+				<div class="mt-4">
+					<label for="projektart" class="mb-2 block text-sm font-medium text-foreground">
+						Worum geht es? *
+					</label>
+					<select
+						id="projektart"
+						name="projektart"
+						required
+						class="w-full rounded-md border border-input bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+					>
+						<option value="">Bitte auswählen</option>
+						<option value="Neue Website erstellen">Neue Website erstellen</option>
+						<option value="Bestehende Website modernisieren">Bestehende Website modernisieren</option>
+						<option value="SEO und mehr Sichtbarkeit">SEO und mehr Sichtbarkeit</option>
+						<option value="Landingpage für Google Ads">Landingpage für Google Ads</option>
+						<option value="Beratung gewünscht">Beratung gewünscht</option>
+					</select>
+				</div>
+
+				<div class="mt-4">
+					<label for="nachricht" class="mb-2 block text-sm font-medium text-foreground">
+						Kurzbeschreibung
+					</label>
+					<textarea
+						id="nachricht"
+						name="nachricht"
+						rows="4"
+						placeholder="Beschreiben Sie kurz Ihr Projekt, Ihre aktuelle Situation oder Ihr Ziel."
+						class="w-full rounded-md border border-input bg-background px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+					></textarea>
+				</div>
+
+				<label class="mt-5 flex gap-3 text-sm leading-relaxed text-muted-foreground">
+					<input
+						type="checkbox"
+						name="datenschutz"
+						required
+						class="mt-1 h-4 w-4 rounded border-input"
+					/>
+					<span>
+						Ich habe die
+						<a href="/datenschutz" class="underline hover:text-foreground">
+							Datenschutzerklärung
+						</a>
+						gelesen und bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden.
+					</span>
+				</label>
+
+				<div class="mt-6 flex flex-col items-center gap-4">
+					<Button type="submit" variant="primary" size="lg" class="w-full sm:w-auto whitespace-nowrap">
+						{button.label}
+					</Button>
+
+					<p class="text-center text-xs text-muted-foreground">
+						Ihre Angaben werden vertraulich behandelt und ausschliesslich zur Bearbeitung Ihrer Anfrage verwendet.
+					</p>
+				</div>
+			</form>
 		</div>
 	</div>
 </section>

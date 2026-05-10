@@ -1,0 +1,32 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<Layout>
+	<Header />
+
+	<main class="mx-auto max-w-4xl px-6 py-24 text-center">
+		<p class="mb-4 text-sm font-semibold uppercase tracking-wide text-primary">
+			Anfrage erhalten
+		</p>
+
+		<h1 class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+			Vielen Dank für Ihre Anfrage.
+		</h1>
+
+		<p class="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+			Ihre Nachricht wurde erfolgreich übermittelt. Wir prüfen Ihre Anfrage und melden uns in der Regel innerhalb von 24 Stunden bei Ihnen.
+		</p>
+
+		<a
+			href="/"
+			class="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
+		>
+			Zurück zur Startseite
+		</a>
+	</main>
+
+	<Footer />
+</Layout>

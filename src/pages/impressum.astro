@@ -1,0 +1,46 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<Layout>
+  <Header />
+
+  <main class="mx-auto max-w-4xl px-6 py-24 text-center">
+    <h1 class="mb-10 text-4xl font-bold">Impressum</h1>
+
+    <div class="space-y-6 text-lg leading-relaxed">
+      <p>
+        <strong>SwissPeak Media</strong><br />
+        Eine Marke der CSL Computer Service GmbH
+      </p>
+
+      <p>
+        Rennweg 62<br />
+        2504 Biel/Bienne<br />
+        Schweiz
+      </p>
+
+      <p>
+        Telefon:
+        <a class="underline" href="tel:+41323410888">
+          +41 32 341 08 88
+        </a>
+        <br />
+        E-Mail:
+        <a class="underline" href="mailto:info@swisspeakmedia.ch">
+          info@swisspeakmedia.ch
+        </a>
+      </p>
+
+      <p>
+        Verantwortlich für den Inhalt dieser Website:<br />
+        CSL Computer Service GmbH<br />
+    
+      </p>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
