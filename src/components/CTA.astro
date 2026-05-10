@@ -33,9 +33,10 @@ const { headline, description, button, disclaimer } = cta;
 			<form
 				name="website-anfrage"
 				method="POST"
+				netlify
 				data-netlify="true"
 				netlify-honeypot="bot-field"
-				action="/danke"
+				action="/danke/"
 				class="mx-auto max-w-3xl"
 			>
 				<input type="hidden" name="form-name" value="website-anfrage" />
@@ -114,9 +115,9 @@ const { headline, description, button, disclaimer } = cta;
 					<input
 						id="website"
 						name="website"
-						type="url"
+						type="text"
 						autocomplete="url"
-						placeholder="https://www.ihre-website.ch"
+						placeholder="z. B. meine-website.ch"
 						class="w-full rounded-md border border-input bg-background px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
 					/>
 				</div>
