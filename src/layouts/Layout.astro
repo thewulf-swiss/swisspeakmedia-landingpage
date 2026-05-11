@@ -1,7 +1,6 @@
 ---
 import { siteConfig } from "@/lib/content";
 import "@/styles/starwind.css";
-// Wir importieren das Hero-Bild hier, um den echten Pfad (mit Hash) zu bekommen!
 import heroImage from "@/assets/seo-webdesign-dashboard-schweiz.webp";
 
 const { title, description, image } = siteConfig;
@@ -21,6 +20,12 @@ const ogImageURL = new URL(image, baseURL);
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonicalURL} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImageURL} />
 
         <script is:inline>
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -45,15 +50,31 @@ const ogImageURL = new URL(image, baseURL);
         </main>
 
         <script is:inline>
-            window.addEventListener('DOMContentLoaded', () => {
-                setTimeout(() => {
-                    var s = document.createElement('script');
+            (function() {
+                let scriptLoaded = false;
+
+                function loadCookieScript() {
+                    if (scriptLoaded) return;
+                    scriptLoaded = true;
+                    
+                    const s = document.createElement('script');
                     s.id = 'cookieyes';
                     s.src = 'https://cdn-cookieyes.com/client_data/a8f07d55c3f568697d7ad4a2fa04e68d/script.js';
                     s.async = true;
                     document.body.appendChild(s);
-                }, 3000); 
-            });
+
+                    window.removeEventListener('scroll', loadCookieScript);
+                    window.removeEventListener('mousemove', loadCookieScript);
+                    window.removeEventListener('touchstart', loadCookieScript);
+                }
+
+                window.addEventListener('scroll', loadCookieScript, { passive: true });
+                window.addEventListener('mousemove', loadCookieScript, { passive: true });
+                window.addEventListener('touchstart', loadCookieScript, { passive: true });
+
+                // 8 Sekunden Fallback für ganz langsame Bots
+                setTimeout(loadCookieScript, 8000);
+            })();
         </script>
     </body>
 </html>
