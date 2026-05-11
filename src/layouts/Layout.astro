@@ -36,6 +36,7 @@ const ogImageURL = new URL(image, baseURL);
         </script>
 
         <link rel="icon" type="image/svg+xml" href="/launch.svg" />
+        
         <script is:inline>
             const isDark = localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
             if (isDark) document.documentElement.classList.add("dark");
@@ -50,42 +51,33 @@ const ogImageURL = new URL(image, baseURL);
 
         <script is:inline>
             (function() {
-                var scriptInjected = false;
-                
                 function injectCookieYes() {
-                    if (scriptInjected) return;
-                    scriptInjected = true;
-                    
-                    console.log("Cookie-System wird aktiviert...");
+                    console.log("6 Sekunden vorbei - Aktiviere Cookie-System");
 
-                    // 1. Footer-Link aktivieren (Klasse zurückgeben)
+                    // 1. Footer-Link wieder mit CookieYes verknüpfen
                     var footerLink = document.getElementById('custom-cookie-settings');
                     if (footerLink) {
                         footerLink.classList.add('cky-banner-element');
                     }
 
-                    // 2. CookieYes Skript laden
+                    // 2. CookieYes Skript dynamisch laden
                     var s = document.createElement('script');
                     s.id = 'cookieyes';
                     s.src = 'https://cdn-cookieyes.com/client_data/a8f07d55c3f568697d7ad4a2fa04e68d/script.js';
                     s.async = true;
                     document.body.appendChild(s);
-
-                    // Listener aufräumen
-                    ['scroll', 'mousemove', 'touchstart'].forEach(function(e) {
-                        window.removeEventListener(e, injectCookieYes);
-                    });
                 }
 
-                // Warten auf Interaktion ODER 3.5 Sekunden Timer
-                ['scroll', 'mousemove', 'touchstart'].forEach(function(e) {
-                    window.addEventListener(e, injectCookieYes, { passive: true });
-                });
+                // Startet exakt 6 Sekunden nach dem ersten Laden
+                setTimeout(injectCookieNow, 6000);
 
-                // Bot-Sicherheit: Erst nach 3.5 Sekunden laden, wenn nichts passiert
-                window.addEventListener('load', function() {
-                    setTimeout(injectCookieYes, 3500);
-                });
+                function injectCookieNow() {
+                    if (document.readyState === 'complete') {
+                        injectCookieYes();
+                    } else {
+                        window.addEventListener('load', injectCookieYes);
+                    }
+                }
             })();
         </script>
     </body>

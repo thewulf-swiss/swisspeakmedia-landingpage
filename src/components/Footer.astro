@@ -18,15 +18,8 @@ const resolveHref = (href: string) =>
 
 const resolveLegalHref = (label: string, href: string) => {
     const normalizedLabel = label.toLowerCase();
-
-    if (normalizedLabel.includes("impressum")) {
-        return "/impressum";
-    }
-
-    if (normalizedLabel.includes("datenschutz")) {
-        return "/datenschutz";
-    }
-
+    if (normalizedLabel.includes("impressum")) return "/impressum";
+    if (normalizedLabel.includes("datenschutz")) return "/datenschutz";
     return resolveHref(href);
 };
 ---
@@ -73,7 +66,7 @@ const resolveLegalHref = (label: string, href: string) => {
                             </a>
                         ))
                     }
-                    {/* Cookie-Link getarnt: cky-Klasse wird erst später per JS hinzugefügt */}
+                    {/* WICHTIG: Die Klasse cky-banner-element wurde entfernt und durch ID ersetzt */}
                     <a
                         id="custom-cookie-settings"
                         href="#"
@@ -87,7 +80,7 @@ const resolveLegalHref = (label: string, href: string) => {
 
         <div class="border-t border-border my-8"></div>
 
-        <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+        <div class="flex flex-row items-center justify-center gap-4">
             <p class="text-sm text-muted-foreground">
                 {copyright}
             </p>
