@@ -44,11 +44,8 @@ import { Image } from "astro:assets";
                 <Image
                     src={heroImage}
                     alt="Modernes SEO und Webdesign Dashboard für Unternehmen in der Schweiz"
-                    /* Erzeugt optimierte Varianten für alle Endgeräte */
                     widths={[400, 800, 1200]}
-                    /* Liefert dem Handy nur das kleine Bild (Fix für deine 74KiB Warnung) */
                     sizes="(max-width: 768px) 100vw, 800px"
-                    /* Verhindert die Warnung "Explizite Breite/Höhe fehlen" */
                     width={1233}
                     height={768}
                     class="w-full h-full object-cover object-center"
