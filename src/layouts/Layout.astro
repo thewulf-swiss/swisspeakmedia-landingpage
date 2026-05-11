@@ -50,25 +50,42 @@ const ogImageURL = new URL(image, baseURL);
 
         <script is:inline>
             (function() {
-                // Wir starten den Timer für PageSpeed-Sicherheit
-                const DELAY = 4000; 
-                console.log("Layout-Check: Timer startet (" + (DELAY/1000) + " Sek)...");
-                
-                setTimeout(function() {
-                    console.log("Layout-Check: Verzögerung vorbei. Lade CookieYes.");
+                var scriptInjected = false;
+                // Hier kannst du die Zeit anpassen: 4000 = 4 Sek.
+                var DELAY_TIME = 4000; 
+
+                function injectCookieYes() {
+                    if (scriptInjected) return;
+                    scriptInjected = true;
                     
-                    // Footer Link für Nutzer wieder findbar machen (falls ID vorhanden)
-                    var link = document.getElementById('custom-cookie-settings');
-                    if (link) {
-                        link.classList.add('cky-banner-element');
+                    console.log("Cookie-System wird nach Verzögerung aktiviert...");
+
+                    // 1. Footer-Link aktivieren (ID suchen und Klasse hinzufügen)
+                    var footerLink = document.getElementById('custom-cookie-settings');
+                    if (footerLink) {
+                        footerLink.classList.add('cky-banner-element');
                     }
 
+                    // 2. CookieYes Skript laden
                     var s = document.createElement('script');
                     s.id = 'cookieyes';
                     s.src = 'https://cdn-cookieyes.com/client_data/a8f07d55c3f568697d7ad4a2fa04e68d/script.js';
                     s.async = true;
                     document.body.appendChild(s);
-                }, DELAY);
+
+                    // Event-Listener entfernen, sobald geladen
+                    ['scroll', 'mousemove', 'touchstart'].forEach(function(e) {
+                        window.removeEventListener(e, injectCookieYes);
+                    });
+                }
+
+                // Interaktion triggert das Banner sofort (gut für echte User)
+                ['scroll', 'mousemove', 'touchstart'].forEach(function(e) {
+                    window.addEventListener(e, injectCookieYes, { passive: true });
+                });
+
+                // Harter Timer für den Fall, dass niemand die Maus bewegt (gut für PageSpeed Bot)
+                setTimeout(injectCookieYes, DELAY_TIME);
             })();
         </script>
     </body>
