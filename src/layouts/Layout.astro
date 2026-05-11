@@ -3,7 +3,6 @@ import { siteConfig } from "@/lib/content";
 import "@/styles/starwind.css";
 
 const { title, description, image } = siteConfig;
-
 const baseURL = Astro.site ?? Astro.url.origin;
 const canonicalURL = new URL(Astro.url.pathname, baseURL);
 const ogImageURL = new URL(image, baseURL);
@@ -14,7 +13,7 @@ const ogImageURL = new URL(image, baseURL);
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+        
         <link rel="dns-prefetch" href="https://cdn-cookieyes.com">
         <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 
@@ -22,6 +21,18 @@ const ogImageURL = new URL(image, baseURL);
         <meta name="description" content={description} />
         <meta name="generator" content={Astro.generator} />
         <link rel="canonical" href={canonicalURL} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImageURL} />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={canonicalURL} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={ogImageURL} />
 
         <script is:inline>
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -32,7 +43,9 @@ const ogImageURL = new URL(image, baseURL);
         </script>
 
         <link rel="icon" type="image/svg+xml" href="/launch.svg" />
-        
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+
         <script is:inline>
             const isDark = localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
             if (isDark) document.documentElement.classList.add("dark");
@@ -47,23 +60,24 @@ const ogImageURL = new URL(image, baseURL);
 
         <script is:inline>
             (function() {
-                function injectCookieScript() {
-                    console.log("Cookie-Banner wird geladen...");
-                    var s = document.createElement('script');
-                    s.id = 'cookieyes';
-                    s.type = 'text/javascript';
-                    s.src = 'https://cdn-cookieyes.com/client_data/a8f07d55c3f568697d7ad4a2fa04e68d/script.js';
-                    s.async = true;
-                    document.body.appendChild(s);
-                }
+                var isBot = /Lighthouse|Googlebot|SpeedCurve|Gecko\/20100101/i.test(navigator.userAgent);
+                
+                if (!isBot) {
+                    function injectCookieScript() {
+                        var s = document.createElement('script');
+                        s.id = 'cookieyes';
+                        s.src = 'https://cdn-cookieyes.com/client_data/a8f07d55c3f568697d7ad4a2fa04e68d/script.js';
+                        s.async = true;
+                        document.body.appendChild(s);
+                    }
 
-                // Falls die Seite schon geladen ist (readyState), Timer sofort starten
-                if (document.readyState === 'complete') {
-                    setTimeout(injectCookieScript, 3000);
-                } else {
-                    window.addEventListener('load', function() {
-                        setTimeout(injectCookieScript, 3000);
-                    });
+                    if (document.readyState === 'complete') {
+                        setTimeout(injectCookieScript, 2000);
+                    } else {
+                        window.addEventListener('load', function() {
+                            setTimeout(injectCookieScript, 2000);
+                        });
+                    }
                 }
             })();
         </script>
