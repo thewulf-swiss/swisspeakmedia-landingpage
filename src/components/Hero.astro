@@ -2,6 +2,7 @@
 import { hero } from "@/lib/content";
 import Button from "./starwind/button/Button.astro";
 import heroImage from "@/assets/seo-webdesign-dashboard-schweiz.webp";
+import { Image } from "astro:assets";
 ---
 
 <section id="hero" class="relative overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24">
@@ -40,9 +41,16 @@ import heroImage from "@/assets/seo-webdesign-dashboard-schweiz.webp";
             </div>
 
             <div class="relative aspect-[16/10] rounded-3xl overflow-hidden bg-white shadow-2xl border border-white/40 scale-105">
-                <img
-                    src={heroImage.src}
+                <Image
+                    src={heroImage}
                     alt="Modernes SEO und Webdesign Dashboard für Unternehmen in der Schweiz"
+                    /* Erzeugt optimierte Varianten für alle Endgeräte */
+                    widths={[400, 800, 1200]}
+                    /* Liefert dem Handy nur das kleine Bild (Fix für deine 74KiB Warnung) */
+                    sizes="(max-width: 768px) 100vw, 800px"
+                    /* Verhindert die Warnung "Explizite Breite/Höhe fehlen" */
+                    width={1233}
+                    height={768}
                     class="w-full h-full object-cover object-center"
                     loading="eager"
                     fetchpriority="high"

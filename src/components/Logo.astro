@@ -1,12 +1,21 @@
 ---
-import logo from "@/assets/logo-swiss-peak-media-webagentur-schweiz.webp";
+import { Image } from "astro:assets";
+// Pfad zu deinem Logo - stelle sicher, dass er korrekt ist
+import logoImage from "@/assets/logo-swiss-peak-media-webagentur-schweiz.webp";
 ---
 
-<div class="flex items-center">
-	<img
-		src={logo.src}
-		alt="SWISS PEAK MEDIA – Webagentur Schweiz"
-		class="h-14 md:h-30 w-auto object-contain"
-		loading="eager"
-	/>
-</div>
+<a href="/" class="flex items-center">
+    <Image 
+        src={logoImage} 
+        /* PageSpeed hat 100x56 gemessen. 
+           Wir geben ihm 200px Breite für Retina-Displays (knackscharf), 
+           damit ist es immer noch 80% kleiner als dein altes Original.
+        */
+        width={200} 
+        height={112}
+        alt="SWISS PEAK MEDIA – Webagentur Schweiz"
+        class="h-14 md:h-30 w-auto object-contain"
+        loading="eager"
+        decoding="async"
+    />
+</a>

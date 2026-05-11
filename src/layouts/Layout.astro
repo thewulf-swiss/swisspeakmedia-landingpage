@@ -1,6 +1,7 @@
 ---
 import { siteConfig } from "@/lib/content";
 import "@/styles/starwind.css";
+// Wir importieren das Bild für die Optimierung
 import heroImage from "@/assets/seo-webdesign-dashboard-schweiz.webp";
 
 const { title, description, image } = siteConfig;
@@ -36,7 +37,6 @@ const ogImageURL = new URL(image, baseURL);
         </script>
 
         <link rel="icon" type="image/svg+xml" href="/launch.svg" />
-        
         <script is:inline>
             const isDark = localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
             if (isDark) document.documentElement.classList.add("dark");
@@ -52,39 +52,32 @@ const ogImageURL = new URL(image, baseURL);
         <script is:inline>
             (function() {
                 var scriptInjected = false;
-                var DELAY_TIME = 4000; // Exakt 4 Sekunden für PageSpeed-Sicherheit
+                var DELAY_TIME = 4000; 
 
                 function injectCookieYes() {
                     if (scriptInjected) return;
                     scriptInjected = true;
                     
-                    console.log("Cookie-System wird aktiviert...");
-
-                    // 1. Footer-Link Funktionalität wiederherstellen
                     var footerLink = document.getElementById('custom-cookie-settings');
                     if (footerLink) {
                         footerLink.classList.add('cky-banner-element');
                     }
 
-                    // 2. CookieYes Skript dynamisch laden
                     var s = document.createElement('script');
                     s.id = 'cookieyes';
                     s.src = 'https://cdn-cookieyes.com/client_data/a8f07d55c3f568697d7ad4a2fa04e68d/script.js';
                     s.async = true;
                     document.body.appendChild(s);
 
-                    // Event-Listener entfernen, da Skript nun geladen wird
                     ['scroll', 'mousemove', 'touchstart'].forEach(function(e) {
                         window.removeEventListener(e, injectCookieYes);
                     });
                 }
 
-                // A: Bei Benutzerinteraktion sofort laden (UX & Rechtssicherheit)
                 ['scroll', 'mousemove', 'touchstart'].forEach(function(e) {
                     window.addEventListener(e, injectCookieYes, { passive: true });
                 });
 
-                // B: Nach Ablauf des Timers laden (Backup für Bots/PageSpeed)
                 setTimeout(injectCookieYes, DELAY_TIME);
             })();
         </script>
