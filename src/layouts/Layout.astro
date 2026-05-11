@@ -36,7 +36,6 @@ const ogImageURL = new URL(image, baseURL);
         </script>
 
         <link rel="icon" type="image/svg+xml" href="/launch.svg" />
-
         <script is:inline>
             const isDark = localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
             if (isDark) document.documentElement.classList.add("dark");
@@ -51,29 +50,29 @@ const ogImageURL = new URL(image, baseURL);
 
         <script is:inline>
             (function() {
-                let scriptLoaded = false;
-
-                function loadCookieScript() {
-                    if (scriptLoaded) return;
-                    scriptLoaded = true;
+                var scriptInjected = false;
+                
+                function injectCookieYes() {
+                    if (scriptInjected) return;
+                    scriptInjected = true;
                     
-                    const s = document.createElement('script');
+                    var s = document.createElement('script');
                     s.id = 'cookieyes';
                     s.src = 'https://cdn-cookieyes.com/client_data/a8f07d55c3f568697d7ad4a2fa04e68d/script.js';
                     s.async = true;
                     document.body.appendChild(s);
 
-                    window.removeEventListener('scroll', loadCookieScript);
-                    window.removeEventListener('mousemove', loadCookieScript);
-                    window.removeEventListener('touchstart', loadCookieScript);
+                    ['scroll', 'mousemove', 'touchstart', 'mousedown'].forEach(function(e) {
+                        window.removeEventListener(e, injectCookieYes);
+                    });
                 }
 
-                window.addEventListener('scroll', loadCookieScript, { passive: true });
-                window.addEventListener('mousemove', loadCookieScript, { passive: true });
-                window.addEventListener('touchstart', loadCookieScript, { passive: true });
+                ['scroll', 'mousemove', 'touchstart', 'mousedown'].forEach(function(e) {
+                    window.addEventListener(e, injectCookieYes, { passive: true });
+                });
 
-                // 8 Sekunden Fallback für ganz langsame Bots
-                setTimeout(loadCookieScript, 8000);
+                // 10 Sekunden Bot-Sicherheit
+                setTimeout(injectCookieYes, 10000);
             })();
         </script>
     </body>
