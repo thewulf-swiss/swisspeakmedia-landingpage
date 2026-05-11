@@ -50,16 +50,16 @@ const ogImageURL = new URL(image, baseURL);
 
         <script is:inline>
             (function() {
-                console.log("Layout-Check: Timer startet (8 Sek)...");
+                console.log("Layout-Check: Timer startet (4 Sek)...");
                 
                 setTimeout(function() {
-                    console.log("Layout-Check: 8 Sek um. Lade CookieYes.");
+                    console.log("Layout-Check: 4 Sek um. Lade CookieYes.");
                     var s = document.createElement('script');
                     s.id = 'cookieyes';
                     s.src = 'https://cdn-cookieyes.com/client_data/a8f07d55c3f568697d7ad4a2fa04e68d/script.js';
                     s.async = true;
                     document.body.appendChild(s);
-                }, 8000);
+                }, 4000);
             })();
         </script>
     </body>
