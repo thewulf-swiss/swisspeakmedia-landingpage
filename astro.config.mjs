@@ -4,8 +4,8 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  // HIER DIE WICHTIGE ERGÄNZUNG:
-  site: 'https://www.swisspeakmedia.ch',
+  // JETZT RICHTIG: Ohne www, passend zu deinen Ads und Vercel
+  site: 'https://swisspeakmedia.ch',
   
   devToolbar: {
     enabled: false
