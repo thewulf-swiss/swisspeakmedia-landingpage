@@ -46,16 +46,26 @@ const ogImageURL = new URL(image, baseURL);
         </main>
 
         <script is:inline>
-            window.addEventListener('load', function() {
-                setTimeout(function() {
+            (function() {
+                function injectCookieScript() {
+                    console.log("Cookie-Banner wird geladen...");
                     var s = document.createElement('script');
                     s.id = 'cookieyes';
                     s.type = 'text/javascript';
                     s.src = 'https://cdn-cookieyes.com/client_data/a8f07d55c3f568697d7ad4a2fa04e68d/script.js';
                     s.async = true;
                     document.body.appendChild(s);
-                }, 2500); // 2.5 Sekunden Delay
-            });
+                }
+
+                // Falls die Seite schon geladen ist (readyState), Timer sofort starten
+                if (document.readyState === 'complete') {
+                    setTimeout(injectCookieScript, 3000);
+                } else {
+                    window.addEventListener('load', function() {
+                        setTimeout(injectCookieScript, 3000);
+                    });
+                }
+            })();
         </script>
     </body>
 </html>
