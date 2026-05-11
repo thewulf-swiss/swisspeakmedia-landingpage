@@ -73,10 +73,11 @@ const resolveLegalHref = (label: string, href: string) => {
                             </a>
                         ))
                     }
-                    {/* Cookie-Einstellungen Link für CookieYes */}
+                    {/* Cookie-Link getarnt: cky-Klasse wird erst später per JS hinzugefügt */}
                     <a
+                        id="custom-cookie-settings"
                         href="#"
-                        class="cky-banner-element text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        class="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                         Cookie-Einstellungen
                     </a>
