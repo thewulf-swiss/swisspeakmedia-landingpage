@@ -66,21 +66,13 @@ const resolveLegalHref = (label: string, href: string) => {
                             </a>
                         ))
                     }
-                    {/* WICHTIG: Die Klasse cky-banner-element wurde entfernt und durch ID ersetzt */}
-                    <a
-                        id="custom-cookie-settings"
-                        href="#"
-                        class="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                        Cookie-Einstellungen
-                    </a>
                 </nav>
             </div>
         </div>
 
         <div class="border-t border-border my-8"></div>
 
-        <div class="flex flex-row items-center justify-center gap-4">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4">
             <p class="text-sm text-muted-foreground">
                 {copyright}
             </p>
