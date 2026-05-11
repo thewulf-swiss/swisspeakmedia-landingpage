@@ -7,89 +7,89 @@ const { sections, copyright } = footer;
 const { quickLinks, legal } = sections;
 
 const resolveHref = (href: string) =>
-	href.startsWith("#")
-		? `/${href}`
-		: href.startsWith("/") ||
-			  href.startsWith("http") ||
-			  href.startsWith("mailto:") ||
-			  href.startsWith("tel:")
-			? href
-			: `/${href}`;
+    href.startsWith("#")
+        ? `/${href}`
+        : href.startsWith("/") ||
+              href.startsWith("http") ||
+              href.startsWith("mailto:") ||
+              href.startsWith("tel:")
+            ? href
+            : `/${href}`;
 
 const resolveLegalHref = (label: string, href: string) => {
-	const normalizedLabel = label.toLowerCase();
+    const normalizedLabel = label.toLowerCase();
 
-	if (normalizedLabel.includes("impressum")) {
-		return "/impressum";
-	}
+    if (normalizedLabel.includes("impressum")) {
+        return "/impressum";
+    }
 
-	if (normalizedLabel.includes("datenschutz")) {
-		return "/datenschutz";
-	}
+    if (normalizedLabel.includes("datenschutz")) {
+        return "/datenschutz";
+    }
 
-	return resolveHref(href);
+    return resolveHref(href);
 };
 ---
 
 <footer class="border-t border-border bg-background py-12 sm:py-16">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<!-- Footer Content -->
-		<div class="grid gap-8 mb-8 md:grid-cols-[1.4fr_0.8fr_0.8fr]">
-			<!-- Brand Section -->
-			<div class="flex flex-col items-start gap-4">
-				<div class="flex gap-2 items-center">
-					<Logo />
-					<span class="font-bold">{name}</span>
-				</div>
-				<p class="text-sm text-muted-foreground max-w-xs">
-					{description}
-				</p>
-			</div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 mb-8 md:grid-cols-[1.4fr_0.8fr_0.8fr]">
+            <div class="flex flex-col items-start gap-4">
+                <div class="flex gap-2 items-center">
+                    <Logo />
+                    <span class="font-bold">{name}</span>
+                </div>
+                <p class="text-sm text-muted-foreground max-w-xs">
+                    {description}
+                </p>
+            </div>
 
-			<!-- Quick Links Section -->
-			<div class="flex flex-col gap-4 md:justify-self-center">
-				<h3 class="font-semibold text-foreground">{quickLinks.title}</h3>
-				<nav class="flex flex-col gap-2">
-					{
-						quickLinks.links.map((link) => (
-							<a
-								href={resolveHref(link.href)}
-								class="text-sm text-muted-foreground hover:text-foreground transition-colors"
-							>
-								{link.label}
-							</a>
-						))
-					}
-				</nav>
-			</div>
+            <div class="flex flex-col gap-4 md:justify-self-center">
+                <h3 class="font-semibold text-foreground">{quickLinks.title}</h3>
+                <nav class="flex flex-col gap-2">
+                    {
+                        quickLinks.links.map((link) => (
+                            <a
+                                href={resolveHref(link.href)}
+                                class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                            >
+                                {link.label}
+                            </a>
+                        ))
+                    }
+                </nav>
+            </div>
 
-			<!-- Legal Section -->
-			<div class="flex flex-col gap-4 md:justify-self-end">
-				<h3 class="font-semibold text-foreground">Rechtliches</h3>
-				<nav class="flex flex-col gap-2">
-					{
-						legal.links.map((link) => (
-							<a
-								href={resolveLegalHref(link.label, link.href)}
-								class="text-sm text-muted-foreground hover:text-foreground transition-colors"
-							>
-								{link.label}
-							</a>
-						))
-					}
-				</nav>
-			</div>
-		</div>
+            <div class="flex flex-col gap-4 md:justify-self-end">
+                <h3 class="font-semibold text-foreground">Rechtliches</h3>
+                <nav class="flex flex-col gap-2">
+                    {
+                        legal.links.map((link) => (
+                            <a
+                                href={resolveLegalHref(link.label, link.href)}
+                                class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                            >
+                                {link.label}
+                            </a>
+                        ))
+                    }
+                    {/* Cookie-Einstellungen Link für CookieYes */}
+                    <a
+                        href="#"
+                        class="cky-banner-element text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                        Cookie-Einstellungen
+                    </a>
+                </nav>
+            </div>
+        </div>
 
-		<!-- Divider -->
-		<div class="border-t border-border my-8"></div>
+        <div class="border-t border-border my-8"></div>
 
-		<!-- Bottom Section -->
-		<div class="flex flex-col md:flex-row items-center justify-center gap-4">
-			<!-- Copyright -->
-			<p class="text-sm text-muted-foreground">
-				{copyright}
-			</p>
-		</div>
-	</div>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+            <p class="text-sm text-muted-foreground">
+                {copyright}
+            </p>
+        </div>
+    </div>
 </footer>
