@@ -44,10 +44,13 @@ import { Image } from "astro:assets";
                 <Image
                     src={heroImage}
                     alt="Modernes SEO und Webdesign Dashboard für Unternehmen in der Schweiz"
-                    widths={[400, 800, 1200]}
-                    sizes="(max-width: 768px) 100vw, 800px"
-                    width={1233}
-                    height={768}
+                    /* Optimierte Breiten: 400 für Mobile, 900 für Desktop Retina */
+                    widths={[400, 800, 900]}
+                    /* Teilt dem Browser mit, dass das Bild auf Desktop nur 450px Platz einnimmt */
+                    sizes="(max-width: 768px) 100vw, 450px"
+                    /* Reduzierte Basis-Dimensionen sparen die entscheidenden KiB */
+                    width={900}
+                    height={563}
                     class="w-full h-full object-cover object-center"
                     loading="eager"
                     fetchpriority="high"
