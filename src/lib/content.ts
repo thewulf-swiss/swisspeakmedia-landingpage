@@ -32,9 +32,9 @@ export const header = {
 
 export const hero = {
   headline:
-    "Webdesign & KI-optimierte Websites für Unternehmen in der Schweiz",
+    "High-Speed Websites für Google & KI",
   subheadline:
-    "Wir entwickeln moderne, ultraschnelle Websites mit Fokus auf Google-Sichtbarkeit, Conversion und künstliche Intelligenz – perfekt für Unternehmen, die online wachsen möchten.",
+    "Wir bauen die schnellsten Websites der Schweiz – optimiert für Top-Rankings und Empfehlungen durch ChatGPT & Co.",
   primaryCta: {
     label: "Kostenlose Beratung",
     href: "#cta"
@@ -50,45 +50,45 @@ export const hero = {
 };
 
 export const problem = {
-  headline: "Verliert Ihre Website täglich potenzielle Kunden?",
+  headline: " Langsame Websites sind unsichtbar.",
   description:
-    "Viele Unternehmenswebsites sehen zwar gut aus, generieren jedoch kaum Anfragen bei Google.Langsame Ladezeiten, veraltetes Design, fehlende SEO-Struktur und schwache Conversion-Optimierung sorgen dafür, dass Besucher abspringen, bevor überhaupt Kontakt entsteht."
+    "Wer heute länger als 2 Sekunden lädt, verliert Kunden an die Konkurrenz. Noch schlimmer: Wenn Ihre Website-Struktur veraltet ist, wird sie von modernen KI-Suchassistenten schlichtweg ignoriert."
 };
 
 export const solution = {
   headline: "Websites, die sichtbar sind und Kunden gewinnen.",
   description:
-    "Wir entwickeln moderne, ultraschnelle Webseiten mit Fokus auf SEO, Nutzererlebnis und Conversion. So entsteht nicht nur eine schöne Website, sondern ein digitales System, das Vertrauen aufbaut, bei Google gefunden wird und gezielt neue Anfragen generiert."
+    "Wir kombinieren radikale Ladegeschwindigkeit mit semantischer SEO-Optimierung. Das Ergebnis ist eine Website, die Google dominiert und von KI-Systemen aktiv empfohlen wird."
 };
 
 export const features = {
-  heading: "Darum entscheiden sich Unternehmen für unsere Websites",
+  heading: "Darum entscheiden sich Unternehmen für unsere High-Speed Websites",
   description:
-    "Moderne Webseiten müssen heute mehr können als nur gut aussehen. Unsere Lösungen sind auf Sichtbarkeit, Geschwindigkeit und messbare Anfragen optimiert.",
+    "Moderne Webseiten müssen heute mehr können als nur gut aussehen. Unsere Lösungen sind radikal auf Speed, Google-Rankings und Empfehlungen durch KI-Systeme optimiert.",
   items: [
     {
       icon: "⚡",
       headline: "Ultraschnelle Ladezeiten",
       description:
-        "Schnelle Websites sorgen für bessere Google-Rankings, tiefere Absprungraten und mehr Anfragen."
+        "Blitzschnelle Websites sorgen für maximale Google-Rankings, minimale Absprungraten und zufriedene Nutzer."
     },
     {
-      icon: "✨",
-      headline: "Modernes Webdesign",
+      icon: "🤖",
+      headline: "KI-Ready Struktur",
       description:
-        "Individuelle Webseiten mit klarem Design, starker Nutzerführung und professionellem Markenauftritt."
+        "Wir strukturieren Ihre Inhalte so, dass KI-Suchmaschinen wie ChatGPT & Perplexity Ihr Unternehmen verstehen und aktiv empfehlen."
     },
     {
-      icon: "🎨",
-      headline: "SEO & Google-Sichtbarkeit",
+      icon: "🔍",
+      headline: "SEO & Sichtbarkeit",
       description:
-        "Technisch optimierte Webseiten mit Fokus auf lokale Auffindbarkeit und nachhaltigen organischen Traffic."
+        "Technisch optimierte Webseiten mit Fokus auf Top-Platzierungen und nachhaltigen organischen Traffic in der neuen Ära der Suche."
     },
     {
       icon: "📊",
       headline: "Conversion-Optimiert",
       description:
-        "Jede Seite wird darauf ausgelegt, Besucher gezielt in Anfragen und Kunden zu verwandeln."
+        "Jede Seite wird darauf ausgelegt, Besucher gezielt in messbare Anfragen und loyale Kunden zu verwandeln."
     },
     {
       icon: "🔒",
@@ -98,9 +98,9 @@ export const features = {
     },
     {
       icon: "📱",
-      headline: "Perfekt für Smartphone & Desktop",
+      headline: "Mobile-First Excellence",
       description:
-        "Optimiert für alle Geräte — schnell, responsiv und benutzerfreundlich auf Mobile und Desktop."
+        "Optimiert für alle Geräte – kompromisslose Performance und Benutzerfreundlichkeit auf Smartphone und Desktop."
     }
   ]
 };
@@ -164,9 +164,9 @@ export const testimonials = {
 };
 
 export const cta = {
-  headline: "Bereit für mehr Sichtbarkeit und neue Kundenanfragen?",
+  headline: "Bereit für High-Speed und messbare KI-Sichtbarkeit?",
   description:
-    "Lassen Sie uns unverbindlich über Ihr Projekt sprechen. Sie erhalten eine ehrliche Einschätzung, passende Ideen und ein modernes Konzept für Ihre neue Website.",
+    "Lassen Sie uns unverbindlich über Ihr Projekt sprechen. Sie erhalten eine ehrliche Einschätzung, wie wir Ihre Website für Google und KI-Suchmaschinen optimieren und ein modernes Konzept für Ihren digitalen Erfolg erstellen.",
   button: {
     label: "Kostenlose Beratung anfragen",
     href: "#email-signup"
@@ -176,37 +176,37 @@ export const cta = {
 
 export const faq = {
   heading: "Häufige Fragen",
-  description: "Antworten auf die wichtigsten Fragen rund um Webdesign, SEO und moderne Unternehmenswebsites.",
+  description: "Antworten auf die wichtigsten Fragen zu High-Speed Webdesign, Google-Rankings und KI-Sichtbarkeit.",
   items: [
     {
       question: "Wie lange dauert eine neue Website?",
       answer:
-        "Die Umsetzungszeit hängt vom Umfang ab. Kleine Unternehmenswebsites können oft innerhalb weniger Wochen realisiert werden."
+        "Die Umsetzungszeit hängt vom Umfang ab. Dank unserer effizienten Architektur realisieren wir ultraschnelle Unternehmenswebsites oft innerhalb von 3 bis 6 Wochen."
     },
     {
-      question: "Wird meine Website für Google optimiert?",
+      question: "Wird meine Website für Google & KI-Bots optimiert?",
       answer:
-        "Ja. Unsere Websites werden technisch SEO-optimiert aufgebaut — inklusive Performance, Struktur und mobiler Optimierung."
+        "Ja. Wir setzen auf semantische SEO und saubere Datenstrukturen. So wird Ihre Website nicht nur von Google top gerankt, sondern auch von KI-Systemen wie ChatGPT und Perplexity als Quelle verstanden und empfohlen."
+    },
+    {
+      question: "Warum ist Ladegeschwindigkeit (Speed) so wichtig?",
+      answer:
+        "Speed ist heute der wichtigste Ranking-Faktor. Schnelle Websites sorgen für eine bessere Nutzererfahrung, niedrigere Werbekosten (ADS) und werden von Suchmaschinen massiv bevorzugt."
+    },
+    {
+      question: "Was bedeutet Optimierung für KI-Suchergebnisse?",
+      answer:
+        "Klassische Suche liefert Links, KI-Suche liefert Antworten. Wir strukturieren Ihre Inhalte so („Schema Markup“), dass KI-Modelle Ihre Dienstleistungen präzise extrahieren und Sie in KI-generierten Antworten als Experten vorschlagen können."
     },
     {
       question: "Kann ich Inhalte später selbst bearbeiten?",
       answer:
-        "Ja. Auf Wunsch integrieren wir ein benutzerfreundliches CMS wie WordPress oder andere moderne Lösungen."
-    },
-    {
-      question: "Funktioniert die Website auf Smartphones?",
-      answer:
-        "Selbstverständlich. Alle Websites werden vollständig responsive entwickelt und für Mobile optimiert."
-    },
-    {
-      question: "Unterstützen Sie auch nach dem Launch?",
-      answer:
-        "Ja. Wir bieten auf Wunsch Betreuung, Wartung, Anpassungen und Weiterentwicklung Ihrer Website an."
+        "Ja. Wir nutzen moderne, schlanke CMS-Lösungen oder WordPress, die so konfiguriert sind, dass sie die Performance der Website nicht ausbremsen, Ihnen aber volle Flexibilität bei den Texten geben."
         },
         {
           question: "Ist ein kostenloses Erstgespräch möglich?",
           answer:
-            "Ja — die erste Beratung ist kostenlos und unverbindlich. Gemeinsam schauen wir, welche Lösung für Ihr Unternehmen sinnvoll ist."
+            "Ja – die erste Beratung ist kostenlos. Wir analysieren kurz Ihre aktuelle Performance und zeigen Ihnen das Potenzial für Google-Rankings und KI-Empfehlungen auf."
             },
             
   ]

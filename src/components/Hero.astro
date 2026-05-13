@@ -45,15 +45,16 @@ import { Image } from "astro:assets";
 				</div>
 			</div>
 
-			<div class="relative aspect-[16/10] rounded-3xl overflow-hidden bg-white shadow-2xl border border-white/40 scale-105">
+			<div class="relative rounded-2xl overflow-hidden border border-border shadow-xl bg-muted">
 				<Image
 					src={heroImage}
 					alt="Modernes SEO und Webdesign Dashboard für Unternehmen in der Schweiz"
-					widths={[400, 800]}
-					sizes="(max-width: 768px) 100vw, 800px"
-					class="w-full h-full object-cover object-center"
+					width={800} 
+					height={500}
+					class="w-full h-auto object-cover"
 					loading="eager"
 					fetchpriority="high"
+					decoding="async"
 				/>
 			</div>
 		</div>
